@@ -81,11 +81,7 @@ def login():
 
         cursor = conn.cursor()
 
-        cursor.execute("""
-        SELECT *
-        FROM users
-        WHERE username = ?
-        """, (username,))
+        cursor.execute("SELECT * FROM users WHERE username = %s", (username,))
 
         user = cursor.fetchone()
 
