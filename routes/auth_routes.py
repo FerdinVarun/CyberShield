@@ -40,7 +40,7 @@ def register():
                 username,
                 password_hash
             )
-            VALUES (?, ?)
+            VALUES (%s, %s)
             """, (
                 username,
                 hashed_password
