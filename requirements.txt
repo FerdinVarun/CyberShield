@@ -1,0 +1,10 @@
+Flask
+cryptography
+python-dotenv
+flask-wtf
+flask-limiter
+flask-talisman
+gunicorn
+psycopg2-binary
+werkzeug
+bcrypt

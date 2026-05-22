@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Decrypt File</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Decrypt File</h1>
+
+        <form method="POST">
+
+            <input type="text"
+                   name="filename"
+                   placeholder="Encrypted Filename"
+                   required>
+
+            <br><br>
+
+            <input type="password"
+                   name="password"
+                   placeholder="Enter Password"
+                   required>
+
+            <button type="submit">
+                Decrypt File
+            </button>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

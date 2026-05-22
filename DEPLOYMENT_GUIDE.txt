@@ -1,0 +1,47 @@
+# CyberShield Deployment Guide
+
+## 1. Create Free PostgreSQL Database
+Use:
+https://neon.tech
+
+Copy DATABASE_URL.
+
+---
+
+## 2. Create .env File
+
+SECRET_KEY=your_secret
+DATABASE_URL=your_database_url
+
+---
+
+## 3. Push to GitHub
+
+git init
+git add .
+git commit -m "CyberShield"
+git branch -M main
+git remote add origin YOUR_REPO_URL
+git push -u origin main
+
+---
+
+## 4. Deploy on Render
+
+Use:
+https://render.com
+
+Build Command:
+pip install -r requirements.txt
+
+Start Command:
+gunicorn app:app
+
+Add environment variables:
+SECRET_KEY
+DATABASE_URL
+
+---
+
+## 5. Your Website Will Be Live
+https://yourproject.onrender.com

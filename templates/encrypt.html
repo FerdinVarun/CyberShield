@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Encrypt File</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static',
+          filename='css/style.css') }}">
+
+</head>
+
+<body>
+
+    <div class="container">
+
+        <h1>Encrypt File</h1>
+
+        <form method="POST"
+              enctype="multipart/form-data">
+
+            <div class="card">
+
+                <input type="file"
+                       name="file"
+                       required>
+
+                <br><br>
+
+                <input type="password"
+                       name="password"
+                       placeholder="Enter Password"
+                       required>
+
+                <button type="submit">
+                    Encrypt File
+                </button>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html>
+<head>
+
+    <title>Dashboard</title>
+
+    <style>
+
+        body{
+            background:#0f172a;
+            color:white;
+            font-family:Arial;
+            padding:40px;
+        }
+
+        table{
+            width:100%;
+            border-collapse:collapse;
+            margin-top:30px;
+        }
+
+        th, td{
+            border:1px solid white;
+            padding:15px;
+            text-align:center;
+        }
+
+        th{
+            background:#1e293b;
+        }
+
+        tr{
+            background:#111827;
+        }
+
+        h1{
+            text-align:center;
+        }
+
+        .logout-btn{
+            background:red;
+            color:white;
+            padding:10px 20px;
+            border:none;
+            border-radius:8px;
+            cursor:pointer;
+        }
+
+    </style>
+
+</head>
+
+<body>
+    
+
+    <h1>
+        Welcome {{ username }}
+    </h1>
+    <h3>
+    Total Files: {{ total_files }}
+</h3>
+
+    <a href="/logout">
+        <button class="logout-btn">
+            Logout
+        </button>
+    </a>
+    <br><br>
+    <div class="navbar">
+
+    <h2>CyberShield</h2>
+
+    <div class="nav-links">
+
+        <a href="/dashboard">Dashboard</a>
+
+        <a href="/encrypt">Encrypt</a>
+
+        <a href="/logout">Logout</a>
+
+    </div>
+
+</div>
+
+    <input type="text"
+       id="searchInput"
+       placeholder="Search files..."
+       onkeyup="searchFiles()">
+    {% if files|length == 0 %}
+
+    <div class="card">
+
+        <h2>No encrypted files found</h2>
+
+    </div>
+
+    {% endif %}
+    <table>
+
+        <tr>
+            <th>ID</th>
+            <th>Original File</th>
+            <th>Encrypted File</th>
+            <th>Upload Time</th>
+            <th>Action</th>
+        </tr>
+
+        {% for file in files %}
+
+        <tr>
+
+            <td>{{ file.id }}</td>
+
+            <td>{{ file.original_filename }}</td>
+
+            <td>{{ file.encrypted_filename }}</td>
+
+            <td>{{ file.upload_time }}</td>
+            <td>
+
+    <a href="/decrypt">
+
+        <button>
+            Decrypt
+        </button>
+
+    </a>
+
+</td>
+
+        </tr>
+
+        {% endfor %}
+
+    </table>
+    <script>
+
+function searchFiles() {
+
+    let input =
+        document.getElementById("searchInput");
+
+    let filter =
+        input.value.toLowerCase();
+
+    let table =
+        document.querySelector("table");
+
+    let tr =
+        table.getElementsByTagName("tr");
+
+    for (let i = 1; i < tr.length; i++) {
+
+        let td =
+            tr[i].getElementsByTagName("td")[1];
+
+        if (td) {
+
+            let text =
+                td.textContent || td.innerText;
+
+            tr[i].style.display =
+                text.toLowerCase().includes(filter)
+                ? ""
+                : "none";
+        }
+    }
+}
+
+</script>
+
+</body>
+</html>
